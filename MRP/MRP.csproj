@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Company>JadeX</Company>
+    <Authors>Xeevis</Authors>
+    <Title>MRP</Title>
+    <Version>1.0.0-alpha.1</Version>
+    <Description>Neoficiální implementace API pro komunikaci s účetním systémem MRP-K/S pomocí autonomního režimu s podporou šifrování a komprese.</Description>
+    <PackageLicenseUrl>https://gitlab.com/JadeX/MRP/raw/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://gitlab.com/JadeX/MRP/</PackageProjectUrl>
+    <PackageId>MRP</PackageId>
+    <PackageIconUrl>https://gitlab.com/JadeX/MRP/raw/master/icon.png</PackageIconUrl>
+    <RepositoryUrl>https://gitlab.com/JadeX/MRP/</RepositoryUrl>
+    <Copyright>JadeX</Copyright>
+    <PackageTags>ucetni eet gdpr api evidence eshop</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Portable.BouncyCastle" Version="1.8.3.37" />
+    <PackageReference Include="SharpCompress" Version="0.22.0" />
+  </ItemGroup>
+</Project>

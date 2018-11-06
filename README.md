@@ -1,9 +1,9 @@
 # MRP-K/S API pro autonomní režim
 
-![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
-![NuGet](https://img.shields.io/nuget/dt/MRP.svg)
-![NuGet Pre Release](https://img.shields.io/nuget/vpre/MRP.svg)
-![Maintenance](https://img.shields.io/badge/NETStandard-2.0+-blue.svg)
+[![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://gitlab.com/JadeX/MRP/raw/master/LICENSE.txt)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/MRP.svg)](https://www.nuget.org/packages/MRP/)
+[![NuGet](https://img.shields.io/nuget/vpre/MRP.svg)](https://www.nuget.org/packages/MRP/)
+[![.NET Standard](https://img.shields.io/badge/NETStandard-2.0+-blue.svg)](https://docs.microsoft.com/en-us/dotnet/standard/net-standard)
 
 Neoficiální implementace API pro komunikaci s účetním systémem MRP-K/S pomocí autonomního režimu s podporou šifrování a komprese. 
 [https://www.mrp.cz/software/ucetnictvi/ks/autonomni-rezim.asp](https://www.mrp.cz/software/ucetnictvi/ks/autonomni-rezim.asp)
@@ -14,15 +14,15 @@ Knihovna není dostatečně otestována v reálném nasazení a chybí serializa
 
 Příkaz | Stav
 -------|-------
-ADREO0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)
-CENEO0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)
-EXPEO0 | ![Dostupné](https://img.shields.io/badge/Dostupnost-Od%201.0.0-blue.svg)
-EXPEO1 | ![Dostupné](https://img.shields.io/badge/Dostupnost-Od%201.0.0-blue.svg)
-EXPFP0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)
-EXPFP1 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)
-EXPFV0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)
-EXPFV1 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)
-IMPEO0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)
+ADREO0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
+CENEO0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
+EXPEO0 | [![Dostupné](https://img.shields.io/badge/Dostupnost-Od%201.0.0-blue.svg)](javascript:)
+EXPEO1 | [![Dostupné](https://img.shields.io/badge/Dostupnost-Od%201.0.0-blue.svg)](javascript:)
+EXPFP0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
+EXPFP1 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
+EXPFV0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
+EXPFV1 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
+IMPEO0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
 
 
 ## Jak začít

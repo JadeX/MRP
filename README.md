@@ -16,8 +16,8 @@ Příkaz | Stav
 -------|-------
 ADREO0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
 CENEO0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
-EXPEO0 | [![Dostupné](https://img.shields.io/badge/Dostupnost-Od%201.0.0-blue.svg)](javascript:)
-EXPEO1 | [![Dostupné](https://img.shields.io/badge/Dostupnost-Od%201.0.0-blue.svg)](javascript:)
+EXPEO0 | [![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.1-yellow.svg)](javascript:)
+EXPEO1 | [![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.1-yellow.svg)](javascript:)
 EXPFP0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
 EXPFP1 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
 EXPFV0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)

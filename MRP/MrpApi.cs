@@ -40,7 +40,7 @@ namespace MRP
 
         public async Task<IMPEO0> IMPEO0(Params @params, Objednavka objednavka) => throw new NotImplementedException();
 
-        public async Task<CENEO0> CENEO0() => throw new NotImplementedException();
+        public async Task<CENEO0> CENEO0(List<NameValueItem> filters) => await PostFilteredAsync<CENEO0>(filters);
 
         public async Task<ADREO0> ADREO0() => throw new NotImplementedException();
 
@@ -235,7 +235,10 @@ namespace MRP
                     goto default;
 
                 case MrpCommands.CENEO0:
-                    response = new CENEO0();
+                    response = new CENEO0()
+                    {
+                        Prices = xdoc.Descendants("ceny").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpPrice>(x.ToString())).ToList()
+                    };
                     goto default;
 
                 case MrpCommands.ADREO0:

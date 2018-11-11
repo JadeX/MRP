@@ -15,7 +15,7 @@ Knihovna není dostatečně otestována v reálném nasazení a chybí serializa
 Příkaz | Stav
 -------|-------
 ADREO0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
-CENEO0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)
+CENEO0 | [![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.2-yellow.svg)](javascript:)
 EXPEO0 | [![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.1-yellow.svg)](javascript:)
 EXPEO1 | [![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.1-yellow.svg)](javascript:)
 EXPFP0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:)

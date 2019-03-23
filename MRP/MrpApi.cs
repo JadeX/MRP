@@ -18,11 +18,11 @@ namespace MRP
     {
         private readonly Cryptography _crypto;
         private readonly MrpApiConfig _config;
+        private readonly HttpClient _httpClient = new HttpClient();
 
         public MrpApi(MrpApiConfig config)
         {
             _config = config;
-
             _crypto = new Cryptography(_config.SecretKey);
         }
 
@@ -102,7 +102,7 @@ namespace MRP
             }
 
             return (T)await ProcessResponseAsync<T>(
-                await new HttpClient().PostAsync(
+                await _httpClient.PostAsync(
                     _config.Url,
                     new StringContent(SerializeToXmlString<MrpEnvelope>(mrpEnvelope), Encoding.UTF8, "application/xml")));
         }

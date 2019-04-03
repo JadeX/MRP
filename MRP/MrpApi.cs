@@ -38,9 +38,11 @@ namespace MRP
 
         public async Task<EXPEO1> EXPEO1(List<NameValueItem> filters) => await PostFilteredAsync<EXPEO1>(filters);
 
-        public async Task<IMPEO0> IMPEO0(Params @params, Objednavka objednavka) => throw new NotImplementedException();
-
         public async Task<CENEO0> CENEO0(List<NameValueItem> filters) => await PostFilteredAsync<CENEO0>(filters);
+
+#pragma warning disable 1998
+
+        public async Task<IMPEO0> IMPEO0(Params @params, Objednavka objednavka) => throw new NotImplementedException();
 
         public async Task<ADREO0> ADREO0() => throw new NotImplementedException();
 
@@ -51,6 +53,8 @@ namespace MRP
         public async Task<EXPFP0> EXPFP0() => throw new NotImplementedException();
 
         public async Task<EXPFP1> EXPFP1() => throw new NotImplementedException();
+
+#pragma warning restore 1998
 
         public async Task<T> PostAsync<T>(Data requestData) where T : IResponse => await PostAsync<T>(XDocument.Parse(SerializeToXmlString<Data>(requestData)));
 

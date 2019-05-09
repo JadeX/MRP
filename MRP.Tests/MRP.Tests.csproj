@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <UserSecretsId>mrp-tests-67c2e6fa-d794-475f-9615-6f72e16fe05d</UserSecretsId>
     <IsPackable>false</IsPackable>
   </PropertyGroup>

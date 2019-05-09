@@ -42,7 +42,7 @@ namespace MRP
 
 #pragma warning disable 1998
 
-        public async Task<IMPEO0> IMPEO0(Params @params, Objednavka objednavka) => throw new NotImplementedException();
+        public async Task<IMPEO0> IMPEO0() => throw new NotImplementedException();
 
         public async Task<ADREO0> ADREO0() => throw new NotImplementedException();
 

@@ -38,8 +38,6 @@ namespace MRP.Tests
 
             var inputBytes = ConvertHexToByteArray(OpenTextHex);
 
-            var keyBytes = _crypto.Hmac_Sha256(ConvertHexToByteArray(PrivateEncryptionKeyHex), ConvertHexToByteArray(VariantKeyHex));
-
             var encryptedBytes = _crypto.EncryptData(inputBytes);
 
             Assert.Equal(EncryptedTextHex, BitConverter.ToString(encryptedBytes));

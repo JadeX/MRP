@@ -26,8 +26,6 @@ namespace MRP.Tests
 
         public IConfiguration Configuration { get; set; }
 
-        public int MyProperty { get; set; }
-
         public string SecretKey { get; set; }
 
         [Fact]
@@ -35,7 +33,7 @@ namespace MRP.Tests
         {
             var mrpApi = new MrpApi(new MrpApiConfig() { Url = ApiUrl });
 
-            var response = await Send(mrpApi);
+            var response = await SendEXPEO0(mrpApi);
 
             Assert.True(!response.HasError || response.ErrorCode == -1);
         }
@@ -45,7 +43,7 @@ namespace MRP.Tests
         {
             var mrpApi = new MrpApi(new MrpApiConfig() { Url = ApiUrl, SecretKey = SecretKey });
 
-            var response = await Send(mrpApi);
+            var response = await SendEXPEO0(mrpApi);
 
             Assert.True(!response.HasError || response.ErrorCode == -1);
         }
@@ -55,7 +53,7 @@ namespace MRP.Tests
         {
             var mrpApi = new MrpApi(new MrpApiConfig() { Url = ApiUrl, SecretKey = SecretKey, UseCompression = false });
 
-            var response = await Send(mrpApi);
+            var response = await SendEXPEO0(mrpApi);
 
             Assert.True(!response.HasError || response.ErrorCode == -1);
         }
@@ -65,14 +63,12 @@ namespace MRP.Tests
         {
             var mrpApi = new MrpApi(new MrpApiConfig() { Url = ApiUrl, UseCompression = false });
 
-            var response = await Send(mrpApi);
-
-            _output.WriteLine($"{response.ErrorCode} {response.ErrorClass} {response.ErrorMessage}");
+            var response = await SendEXPEO0(mrpApi);
 
             Assert.True(!response.HasError || response.ErrorCode == -1);
         }
 
-        private async Task<EXPEO0> Send(MrpApi mrpApi)
+        private async Task<EXPEO0> SendEXPEO0(MrpApi mrpApi)
         {
             var response = await mrpApi.EXPEO0(new List<NameValueItem>() {
                 new NameValueItem() { Name = "cisloSkladu", Value = "1" },

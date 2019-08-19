@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Security.Cryptography;
+using Shouldly;
 using Xunit;
 
 namespace MRP.Tests
@@ -33,41 +34,39 @@ namespace MRP.Tests
             {
                 iV = sha.ComputeHash(variantKey).Take(16).ToArray();
 
-                Assert.Equal(AesIvVectorHex, BitConverter.ToString(iV));
+                AesIvVectorHex.ShouldBe(BitConverter.ToString(iV));
             }
 
             var inputBytes = ConvertHexToByteArray(OpenTextHex);
 
             var encryptedBytes = _crypto.EncryptData(inputBytes);
 
-            Assert.Equal(EncryptedTextHex, BitConverter.ToString(encryptedBytes));
+            EncryptedTextHex.ShouldBe(BitConverter.ToString(encryptedBytes));
 
             var decryptedBytes = _crypto.EncryptData(encryptedBytes);
 
-            Assert.NotEqual(inputBytes, encryptedBytes);
-            Assert.Equal(inputBytes, decryptedBytes);
+            inputBytes.ShouldNotBe(encryptedBytes);
+            inputBytes.ShouldBe(decryptedBytes);
         }
 
         [Fact]
         public void Authentication() =>
-
-            // Authentication code
-            Assert.Equal(AuthenticationCodeHex, BitConverter.ToString(_crypto.Hmac_Sha256(ConvertHexToByteArray(AuthenticationKeyHex), ConvertHexToByteArray(SequenceHex))));
+            AuthenticationCodeHex.ShouldBe(BitConverter.ToString(_crypto.Hmac_Sha256(ConvertHexToByteArray(AuthenticationKeyHex), ConvertHexToByteArray(SequenceHex))));
 
         [Fact]
         public void VerifyCryptoHexes()
         {
             // Secret key
-            Assert.Equal(SecretKeyHex, BitConverter.ToString(Convert.FromBase64String(SecretKey)));
+            SecretKeyHex.ShouldBe(BitConverter.ToString(Convert.FromBase64String(SecretKey)));
 
             // Private encryption key
-            Assert.Equal(PrivateEncryptionKeyHex, BitConverter.ToString(_crypto.PrivateEncryptionKey));
+            PrivateEncryptionKeyHex.ShouldBe(BitConverter.ToString(_crypto.PrivateEncryptionKey));
 
             // Authentication key
-            Assert.Equal(AuthenticationKeyHex, BitConverter.ToString(_crypto.AuthenticationKey));
+            AuthenticationKeyHex.ShouldBe(BitConverter.ToString(_crypto.AuthenticationKey));
 
             // Encryption key
-            Assert.Equal(EncryptionKeyHex, BitConverter.ToString(_crypto.Hmac_Sha256(ConvertHexToByteArray(PrivateEncryptionKeyHex), ConvertHexToByteArray(VariantKeyHex))));
+            EncryptionKeyHex.ShouldBe(BitConverter.ToString(_crypto.Hmac_Sha256(ConvertHexToByteArray(PrivateEncryptionKeyHex), ConvertHexToByteArray(VariantKeyHex))));
         }
 
         private byte[] ConvertHexToByteArray(string hex) => Array.ConvertAll(hex.Split('-'), s => Convert.ToByte(s, 16));

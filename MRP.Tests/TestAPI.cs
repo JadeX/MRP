@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using MRP.Commands;
 using MRP.Xml;
+using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -35,7 +36,7 @@ namespace MRP.Tests
 
             var response = await SendEXPEO0(mrpApi);
 
-            Assert.True(!response.HasError || response.ErrorCode == -1);
+            response.HasError.ShouldBe(response.ErrorCode == -1);
         }
 
         [Fact]
@@ -45,7 +46,7 @@ namespace MRP.Tests
 
             var response = await SendEXPEO0(mrpApi);
 
-            Assert.True(!response.HasError || response.ErrorCode == -1);
+            response.HasError.ShouldBe(response.ErrorCode == -1);
         }
 
         [Fact]
@@ -55,7 +56,7 @@ namespace MRP.Tests
 
             var response = await SendEXPEO0(mrpApi);
 
-            Assert.True(!response.HasError || response.ErrorCode == -1);
+            response.HasError.ShouldBe(response.ErrorCode == -1);
         }
 
         [Fact]
@@ -65,7 +66,7 @@ namespace MRP.Tests
 
             var response = await SendEXPEO0(mrpApi);
 
-            Assert.True(!response.HasError || response.ErrorCode == -1);
+            response.HasError.ShouldBe(response.ErrorCode == -1);
         }
 
         private async Task<EXPEO0> SendEXPEO0(MrpApi mrpApi)

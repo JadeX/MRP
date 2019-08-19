@@ -80,7 +80,7 @@ V celkové hodnotě 44793 CZK.
 Testy API vyžadují tajné parametry, které se načítají z UserSecrets nebo EnvironmentVariables.
 
 ```sh
-dotnet user-secrets set SecretKey tXxAJQ4RKX8S6g699Tg71ZhObveBExGvEJ0+QAKfT7Y= --project MRP.Tests
+dotnet user-secrets set SecretKey xxxXXXxXxXxxXXxXXxxxXXxXXxXXxXXxxXXxXXXxXXX= --project MRP.Tests
 dotnet user-secrets set ApiUrl http://xxx.xxx.xxx.xxx:ppppp --project MRP.Tests
 ```
 
@@ -89,6 +89,7 @@ dotnet user-secrets set ApiUrl http://xxx.xxx.xxx.xxx:ppppp --project MRP.Tests
 * [Portable.BouncyCastle](https://github.com/bcgit/bc-csharp) - Šifrování
 * [SharpCompress](https://github.com/adamhathcock/sharpcompress) - Komprese
 * [xUnit.net](https://github.com/xunit/xunit) - Testování
+* [Shouldly](https://github.com/shouldly/shouldly) - Assertion framework
 
 ## Verze
 

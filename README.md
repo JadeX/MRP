@@ -1,6 +1,6 @@
 # MRP-K/S API pro autonomní režim
 
-[![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://gitlab.com/JadeX/MRP/raw/master/LICENSE.txt)
+[![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/JadeX/MRP/blob/master/LICENSE.txt)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/MRP.svg)](https://www.nuget.org/packages/MRP/)
 [![NuGet](https://img.shields.io/nuget/vpre/MRP.svg)](https://www.nuget.org/packages/MRP/)
 [![.NET Standard](https://img.shields.io/badge/NETStandard-2.0+-blue.svg)](https://docs.microsoft.com/en-us/dotnet/standard/net-standard)
@@ -89,7 +89,7 @@ dotnet user-secrets set ApiUrl http://xxx.xxx.xxx.xxx:ppppp --project MRP.Tests
 * [Portable.BouncyCastle](https://github.com/bcgit/bc-csharp) - Šifrování
 * [SharpCompress](https://github.com/adamhathcock/sharpcompress) - Komprese
 * [xUnit.net](https://github.com/xunit/xunit) - Testování
-* [Shouldly](https://github.com/shouldly/shouldly) - Assertion framework
+  * [Shouldly](https://github.com/shouldly/shouldly) - Assertion framework pro testování
 
 ## Verze
 

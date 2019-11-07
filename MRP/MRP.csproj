@@ -9,15 +9,16 @@
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/JadeX/MRP/</PackageProjectUrl>
     <PackageId>MRP</PackageId>
-    <PackageIconUrl>https://raw.githubusercontent.com/JadeX/MRP/master/icon.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/JadeX/MRP/</RepositoryUrl>
     <Copyright>JadeX</Copyright>
     <PackageTags>ucetni eet gdpr api evidence eshop</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>Refactoring, cleanup, fluent design</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="../LICENSE.txt" Pack="true" PackagePath="" />
+    <None Include="../LICENSE.txt" Pack="true" PackagePath="" Visible="false" />
+    <None Include="../icon.png" Pack="true" PackagePath="" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>

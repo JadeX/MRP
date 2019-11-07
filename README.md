@@ -39,7 +39,7 @@ Install-Package MRP –IncludePrerelease
 **Doporučené základní nastavení s kompresí a šifrováním:**
 
 ```csharp
- var mrpApi = new MrpApi("http://xxx.xxx.xxx.xxx:ppppp") // Jediný povinný parametr je url serveru včetně portu kam se mají zasílat požadavky
+var mrpApi = new MrpApi("http://xxx.xxx.xxx.xxx:ppppp") // Jediný povinný parametr je url serveru včetně portu kam se mají zasílat požadavky
     .WithEncryption("xxxXXXxXxXxxXXxXXxxxXXxXXxXXxXXxxXXxXXXxXXX=") // Přepne komunikaci na šifrovaný režim, jako parametr se použije klíč vygenerovaný na serveru
     .WithCompression() // Zapne zlib kompresi, lze předat parametr upravující úroveň komprese
     .WithTimeout(TimeSpan.FromSeconds(10)); // Jak dlouho je čekáno na odpověď ze serveru než je vyhozena chyba komunikace
@@ -91,4 +91,4 @@ Testy jsou dynamicky označeny jako přeskočené pokud server vrátí chybu, ž
 
 ## Verze
 
-Tato knihovna používá [SemVer 2.0.0](http://semver.org/) pro číslování verzí.
+Tato knihovna používá [SemVer 2.0.0](https://semver.org/) pro číslování verzí.

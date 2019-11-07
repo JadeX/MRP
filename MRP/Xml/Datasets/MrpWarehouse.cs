@@ -1,7 +1,7 @@
-using System.Xml.Serialization;
-
 namespace MRP.Xml.Datasets
 {
+    using System.Xml.Serialization;
+
     [XmlRoot("fields")]
     public class MrpWarehouse
     {

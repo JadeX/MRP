@@ -1,36 +1,36 @@
-using System.Xml;
-using System.Xml.Serialization;
-
 namespace MRP.Xml
 {
+    using System.Xml;
+    using System.Xml.Serialization;
+
+    public class Error
+    {
+        [XmlAttribute("errorClass")]
+        public string ErrorClass { get; set; }
+
+        [XmlAttribute("errorCode")]
+        public string ErrorCode { get; set; }
+
+        [XmlElement("errorMessage")]
+        public string ErrorMessage { get; set; }
+    }
+
     [XmlRoot("mrpResponse")]
     public class MrpResponse
     {
-        [XmlElement("status")]
-        public Status Status { get; set; }
-
         [XmlElement("data")]
         public XmlNode Data { get; set; }
+
+        [XmlElement("status")]
+        public Status Status { get; set; }
     }
 
     public class Status
     {
-        [XmlElement("request")]
-        public Request Request { get; set; }
-
         [XmlElement("error")]
         public Error Error { get; set; }
-    }
 
-    public class Error
-    {
-        [XmlAttribute("errorCode")]
-        public string ErrorCode { get; set; }
-
-        [XmlAttribute("errorClass")]
-        public string ErrorClass { get; set; }
-
-        [XmlElement("errorMessage")]
-        public string ErrorMessage { get; set; }
+        [XmlElement("request")]
+        public Request Request { get; set; }
     }
 }

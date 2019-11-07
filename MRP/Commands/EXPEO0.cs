@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using MRP.Xml.Datasets;
-
 namespace MRP.Commands
 {
+    using System.Collections.Generic;
+    using MRP.Xml.Datasets;
+
     public class EXPEO0 : Response
     {
         public List<MrpCategory> Categories { get; set; } = new List<MrpCategory>();

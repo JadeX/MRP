@@ -1,30 +1,12 @@
-using System.Xml.Serialization;
-
 namespace MRP.Xml.Datasets
 {
+    using System.Xml.Serialization;
+
     [XmlRoot("fields")]
     public class MrpStock
     {
-        [XmlElement("cisloskl")]
-        public int CisloSkl { get; set; }
-
-        [XmlElement("cislokar")]
-        public float Kod { get; set; }
-
-        [XmlElement("pocetmj")]
-        public float PocetMJ { get; set; }
-
-        [XmlElement("pocrezmj")]
-        public float PocRezMJ { get; set; }
-
-        [XmlElement("pocobjmj")]
-        public float PocObjMJ { get; set; }
-
         [XmlElement("cena")]
         public float Cena { get; set; }
-
-        [XmlElement("cenasdph")]
-        public float CenaSDPH { get; set; }
 
         [XmlElement("cena1")]
         public float Cena1 { get; set; }
@@ -56,10 +38,28 @@ namespace MRP.Xml.Datasets
         [XmlElement("cena5sdph")]
         public float Cena5SDPH { get; set; }
 
-        [XmlElement("pozice")]
-        public string Pozice { get; set; }
+        [XmlElement("cenasdph")]
+        public float CenaSDPH { get; set; }
+
+        [XmlElement("cisloskl")]
+        public int CisloSkl { get; set; }
+
+        [XmlElement("cislokar")]
+        public float Kod { get; set; }
 
         [XmlElement("mena")]
         public string Mena { get; set; }
+
+        [XmlElement("pocetmj")]
+        public float PocetMJ { get; set; }
+
+        [XmlElement("pocobjmj")]
+        public float PocObjMJ { get; set; }
+
+        [XmlElement("pocrezmj")]
+        public float PocRezMJ { get; set; }
+
+        [XmlElement("pozice")]
+        public string Pozice { get; set; }
     }
 }

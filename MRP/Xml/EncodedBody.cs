@@ -1,8 +1,8 @@
-using System.Xml;
-using System.Xml.Serialization;
-
 namespace MRP.Xml
 {
+    using System.Xml;
+    using System.Xml.Serialization;
+
     public class EncodedBody
     {
         [XmlElement("authCode")]
@@ -17,9 +17,9 @@ namespace MRP.Xml
         [XmlElement("encodedData")]
         public XmlCDataSection EncodedDataCData
         {
-            get => new XmlDocument().CreateCDataSection(EncodedData);
+            get => new XmlDocument().CreateCDataSection(this.EncodedData);
 
-            set => EncodedData = value.Value;
+            set => this.EncodedData = value.Value;
         }
 
         [XmlIgnore]
@@ -28,9 +28,9 @@ namespace MRP.Xml
         [XmlElement("encodingParams")]
         public XmlCDataSection EncodingParamsCData
         {
-            get => new XmlDocument().CreateCDataSection(EncodingParams);
+            get => new XmlDocument().CreateCDataSection(this.EncodingParams);
 
-            set => EncodingParams = value.Value;
+            set => this.EncodingParams = value.Value;
         }
     }
 }

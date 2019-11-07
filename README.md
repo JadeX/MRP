@@ -8,7 +8,7 @@
 Neoficiální implementace API pro komunikaci s účetním systémem MRP-K/S pomocí autonomního režimu s podporou šifrování a komprese. 
 [https://www.mrp.cz/software/ucetnictvi/ks/autonomni-rezim.asp](https://www.mrp.cz/software/ucetnictvi/ks/autonomni-rezim.asp)
 
-## Aktuální stav: ALPHA
+## Aktuální stav: BETA
 Knihovna není dostatečně otestována v reálném nasazení a chybí serializace pro některé příkazy viz tabulka:
 
 
@@ -36,25 +36,19 @@ Install-Package MRP –IncludePrerelease
 ```
 
 ### Použití
-**Základní použití s kompresí a šifrováním:**
+**Doporučené základní nastavení s kompresí a šifrováním:**
 
 ```csharp
-var mrpApi = new MrpApi(new MrpApiConfig()
-{
-    // Povinný údaj. Kam se mají zasílat požadavky včetně portu.
-    Url = "http://xxx.xxx.xxx.xxx:ppppp",
-    // Nepovinný údaj. Pokud je SecretKey uveden bude komunikace šifrovaná.
-    // JE NUTNÉ VYGENEROVAT VLASTNÍ KLÍČ NA SERVERU!
-    SecretKey = "tXxAJQ4RKX8S6g699Tg71ZhObveBExGvEJ0+QAKfT7Y=",
-    //UseCompression = false, // Tímto lze vypnout kompresi, která je jinak vždy zapnutá.
-    //CompressionLevel = CompressionLevel.Default, // Možnost nastavení míry komprese.
-});
+ var mrpApi = new MrpApi("http://xxx.xxx.xxx.xxx:ppppp") // Jediný povinný parametr je url serveru včetně portu kam se mají zasílat požadavky
+    .WithEncryption("xxxXXXxXxXxxXXxXXxxxXXxXXxXXxXXxxXXxXXXxXXX=") // Přepne komunikaci na šifrovaný režim, jako parametr se použije klíč vygenerovaný na serveru
+    .WithCompression() // Zapne zlib kompresi, lze předat parametr upravující úroveň komprese
+    .WithTimeout(TimeSpan.FromSeconds(10)); // Jak dlouho je čekáno na odpověď ze serveru než je vyhozena chyba komunikace
 
 // Zašleme příkaz EXPEO0 a použijeme přídavné filtrování výsledků podle oficiální dokumentace
-EXPEO0 result = await mrpApi.EXPEO0(new List<NameValueItem>() {
-                new NameValueItem() { Name = "cisloSkladu", Value = "1" },
-                new NameValueItem() { Name = "SKKAR.CISLO", Value = "1..10000" }
-});
+var response = await this.MrpApi.EXPEO0(x => x
+    .Filter("cisloSkladu", "1")
+    .Filter("SKKAR.CISLO", "1..1000")
+);
 
 // Pokud se něco pokazilo, můžeme to vyhodit jako aplikační chybu
 if (result.HasError)
@@ -62,13 +56,14 @@ if (result.HasError)
     throw new Exception(result.ErrorMessage);
 }
 
+// Vypíšeme výsledky do konzole
 Console.WriteLine($"Zvoleným filtrům odpovídá {result.Products.Count} produktů a {result.Categories.Count} kategorií.");
 var produktySkladem = result.Products.Where(x => x.PocetMJ > 0);
 Console.WriteLine($"Z toho je {produktySkladem.Count()} produktů skladem.");
 Console.WriteLine($"V celkové hodnotě {produktySkladem.Sum(x => x.CenaSDPH)} {produktySkladem.First().Mena}.");
 ```
 
-**Úspěšný výstup:**
+**Příklad úspěšného výstupu:**
 ```sh
 Zvoleným filtrům odpovídá 183 produktů a 29 kategorií.
 Z toho je 125 produktů skladem.
@@ -83,6 +78,9 @@ Testy API vyžadují tajné parametry, které se načítají z UserSecrets nebo 
 dotnet user-secrets set SecretKey xxxXXXxXxXxxXXxXXxxxXXxXXxXXxXXxxXXxXXXxXXX= --project MRP.Tests
 dotnet user-secrets set ApiUrl http://xxx.xxx.xxx.xxx:ppppp --project MRP.Tests
 ```
+
+Testy momentálně neověřují správnost údajů, pouze zda byla úspěšná komunikace se serverem a zda byl vrácen alespoň nějaký výsledek.
+Testy jsou dynamicky označeny jako přeskočené pokud server vrátí chybu, že daný příkaz nemá povoleno obsloužení.
 
 ## Použité balíky
 

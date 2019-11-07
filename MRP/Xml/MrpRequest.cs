@@ -1,11 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Xml.Linq;
-using System.Xml.Serialization;
-using MRP.Commands;
-
 namespace MRP.Xml
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using MRP.Commands;
+
     public class Data
     {
         [XmlElement("filter")]
@@ -28,7 +27,7 @@ namespace MRP.Xml
     public class MrpRequest
     {
         [XmlElement("data")]
-        public XElement Data { get; set; }
+        public Data Data { get; set; }
 
         [XmlElement("request")]
         public Request Request { get; set; }

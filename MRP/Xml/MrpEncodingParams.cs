@@ -1,7 +1,7 @@
-using System.Xml.Serialization;
-
 namespace MRP.Xml
 {
+    using System.Xml.Serialization;
+
     [XmlRoot("mrpEncodingParams")]
     public class MrpEncodingParams
     {

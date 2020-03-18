@@ -12,8 +12,8 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/JadeX/MRP/</RepositoryUrl>
     <Copyright>JadeX</Copyright>
-    <PackageTags>ucetni eet gdpr api evidence eshop</PackageTags>
-    <PackageReleaseNotes>Refactoring, cleanup, fluent design</PackageReleaseNotes>
+    <PackageTags>ucetni eet gdpr api evidence eshop mrp</PackageTags>
+    <PackageReleaseNotes>Added .NETStandard 2.1, updated dependencies</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

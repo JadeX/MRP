@@ -18,7 +18,6 @@ namespace MRP.Xml
         public XmlCDataSection EncodedDataCData
         {
             get => new XmlDocument().CreateCDataSection(this.EncodedData);
-
             set => this.EncodedData = value.Value;
         }
 
@@ -29,7 +28,6 @@ namespace MRP.Xml
         public XmlCDataSection EncodingParamsCData
         {
             get => new XmlDocument().CreateCDataSection(this.EncodingParams);
-
             set => this.EncodingParams = value.Value;
         }
     }

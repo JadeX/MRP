@@ -14,18 +14,18 @@ namespace MRP.Tests
         private const string VariantKeyHex = "1F-5A-C7-7E-D3-0C-C0-A5-F7-5B-B0-35-FF-05-66-A5-0D-B2-12-7A-AB-32-D8-62-4E-0D-A4-D4-18-6E-7F-2F";
         private readonly Cryptography crypto;
 
-        public CryptographyTests() => this.crypto = new Cryptography(SecretKey, Convert.ToBase64String(this.ConvertHexToByteArray(VariantKeyHex)));
+        public CryptographyTests() => this.crypto = new Cryptography(SecretKey, Convert.ToBase64String(ConvertHexToByteArray(VariantKeyHex)));
 
         [Fact]
         public void Encryption()
         {
-            var encryptedBytes = this.crypto.EncryptData(this.ConvertHexToByteArray(OpenTextHex));
+            var encryptedBytes = this.crypto.EncryptData(ConvertHexToByteArray(OpenTextHex));
             BitConverter.ToString(encryptedBytes).ShouldBe(EncryptedTextHex);
 
             var decryptedBytes = this.crypto.DecryptData(encryptedBytes);
             BitConverter.ToString(decryptedBytes).ShouldBe(OpenTextHex);
         }
 
-        private byte[] ConvertHexToByteArray(string hex) => Array.ConvertAll(hex.Split('-'), s => Convert.ToByte(s, 16));
+        private static byte[] ConvertHexToByteArray(string hex) => Array.ConvertAll(hex.Split('-'), s => Convert.ToByte(s, 16));
     }
 }

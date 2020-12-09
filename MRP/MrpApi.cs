@@ -42,9 +42,7 @@ namespace MRP
             }
 
             var crypto = new Cryptography(this.config.SecretKey);
-
             var mrpEnvelope = new MrpEnvelope();
-
             var mrpRequest = new MrpRequest()
             {
                 Request = new Request()
@@ -92,7 +90,10 @@ namespace MRP
                 mrpEnvelope.Body = new Body { MrpRequest = mrpRequest };
             }
 
-            return (T)await this.ProcessResponseAsync<T>(await this.httpClient.PostAsync(this.config.Url, new StringContent(SerializeToXmlString<MrpEnvelope>(mrpEnvelope), Encoding.UTF8, "application/xml")));
+            return (T)await this.ProcessResponseAsync<T>(
+                await this.httpClient.PostAsync(
+                    this.config.Url,
+                    new StringContent(SerializeToXmlString<MrpEnvelope>(mrpEnvelope), Encoding.UTF8, "application/xml")));
         }
 
         public MrpApi WithCompression(CompressionLevel level = CompressionLevel.Default)

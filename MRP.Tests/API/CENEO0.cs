@@ -17,7 +17,7 @@ namespace MRP.Tests.API
 
             await CheckResponseForErrors(response);
 
-            response.Prices.ShouldNotBeNull();
+            _ = response.Prices.ShouldNotBeNull();
         }
     }
 }

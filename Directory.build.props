@@ -1,5 +1,17 @@
 <Project>
- <PropertyGroup>
-   <LangVersion>latest</LangVersion>
- </PropertyGroup>
+
+  <PropertyGroup>
+    <RootNamespace>MRP</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Version>1.0.0-beta.3</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Company>JadeX</Company>
+    <Authors>Xeevis</Authors>
+    <Title>MRP</Title>
+    <Product>MRP</Product>
+    <Copyright>JadeX</Copyright>
+  </PropertyGroup>
+
 </Project>

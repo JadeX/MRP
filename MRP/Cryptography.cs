@@ -28,9 +28,13 @@ namespace MRP
         }
 
         private byte[] AuthenticationKey => HmacSha256(this.SecretKey, this.PrivateEncryptionKey.Concat(new byte[] { 0x02 }).ToArray());
+
         private byte[] EncryptionKey => HmacSha256(this.PrivateEncryptionKey, this.VariantKey);
+
         private byte[] PrivateEncryptionKey => HmacSha256(this.SecretKey, new byte[] { 0x01 });
+
         private byte[] SecretKey { get; set; }
+
         private byte[] VariantKey { get; set; } = new byte[32];
 
         /// <summary>

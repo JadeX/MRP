@@ -12,6 +12,7 @@ namespace MRP.Commands
         public List<MrpReplacement> Replacements { get; set; } = new List<MrpReplacement>();
 
         public List<MrpStock> Stocks { get; set; } = new List<MrpStock>();
+
         public List<MrpWarehouse> Warehouses { get; set; } = new List<MrpWarehouse>();
     }
 }

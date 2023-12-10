@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRP", "MRP\MRP.csproj", "{98242D2A-4EC3-4C16-B40E-8D8773E774A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRP", "src\MRP.csproj", "{98242D2A-4EC3-4C16-B40E-8D8773E774A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRP.Tests", "MRP.Tests\MRP.Tests.csproj", "{753649DD-DD1C-48C0-816C-0C0F1D9B0633}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRP.Tests", "tests\MRP.Tests.csproj", "{753649DD-DD1C-48C0-816C-0C0F1D9B0633}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

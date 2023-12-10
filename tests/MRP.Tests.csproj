@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <UserSecretsId>mrp-tests-67c2e6fa-d794-475f-9615-6f72e16fe05d</UserSecretsId>
     <IsPackable>false</IsPackable>
   </PropertyGroup>

@@ -1,0 +1,15 @@
+{
+  "name": "MRP",
+  "dockerComposeFile": "./docker-compose.yml",
+  "postCreateCommand": "sudo chown -R vscode */bin && sudo chown -R vscode */obj && dotnet restore",
+  "service": "app",
+  "remoteUser": "vscode",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csdevkit"
+      ]
+    }
+  }
+}

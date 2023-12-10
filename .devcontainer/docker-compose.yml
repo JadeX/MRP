@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/dotnet:8.0
+    env_file: devcontainer.env
+    volumes:
+      - ..:/workspace:cached
+      - /workspace/src/bin
+      - /workspace/src/obj
+      - /workspace/tests/bin
+      - /workspace/tests/obj
+    command: sleep infinity

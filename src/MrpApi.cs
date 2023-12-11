@@ -32,10 +32,7 @@ public class MrpApi
 
     public async Task<T> PostAsync<T>(Data requestData) where T : IResponse
     {
-        if (this.httpClient == null)
-        {
-            this.httpClient = new HttpClient();
-        }
+        this.httpClient ??= new HttpClient();
 
         if (this.config.Timeout != default)
         {

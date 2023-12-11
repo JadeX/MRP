@@ -3,7 +3,7 @@ namespace MRP.Xml
     using System.Xml;
     using System.Xml.Serialization;
 
-    public class Error
+    public class MrpError
     {
         [XmlAttribute("errorClass")]
         public string ErrorClass { get; set; }
@@ -28,7 +28,7 @@ namespace MRP.Xml
     public class Status
     {
         [XmlElement("error")]
-        public Error Error { get; set; }
+        public MrpError Error { get; set; }
 
         [XmlElement("request")]
         public Request Request { get; set; }

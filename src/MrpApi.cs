@@ -153,7 +153,7 @@ namespace MRP
                     /* BUG: Response is encrypted, but we don't have secret key to decrypt it.
                      * Happens when server is set to require encryption, but request was plaintext.
                      * Let's just assume response contained error requesting encrypted/authenticated communication. */
-                    return new MrpResponse() { Status = new Status() { Error = new Error() { ErrorCode = "-1", ErrorClass = "", ErrorMessage = "Je vyžadována autentizace." } } };
+                    return new MrpResponse() { Status = new Status() { Error = new MrpError() { ErrorCode = "-1", ErrorClass = "", ErrorMessage = "Je vyžadována autentizace." } } };
                 }
 
                 var crypto = new Cryptography(this.config.SecretKey, responseParams.VarKey);

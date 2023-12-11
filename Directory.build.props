@@ -3,6 +3,7 @@
   <PropertyGroup>
     <RootNamespace>MRP</RootNamespace>
     <LangVersion>latest</LangVersion>
+    <Version>1.0.0-beta.3</Version>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>

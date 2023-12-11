@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <RootNamespace>MRP</RootNamespace>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>12.0</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>

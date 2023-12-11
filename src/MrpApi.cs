@@ -161,7 +161,7 @@ namespace MRP
                 if (!crypto.VerifyEnvelopeSignature(mrpEnvelope))
                 {
                     // Signature doesn't match, assume forged response
-                    throw new Exception("Neplatný autentizační kód v elementu \"authCode\"!");
+                    throw new InvalidOperationException("Neplatný autentizační kód v elementu \"authCode\"!");
                 }
 
                 data = crypto.DecryptData(data);

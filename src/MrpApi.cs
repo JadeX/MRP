@@ -15,7 +15,7 @@ using MRP.Xml;
 using MRP.Xml.Datasets;
 using SharpCompress.Compressors.Deflate;
 
-public class MrpApi
+public class MrpApi : IDisposable
 {
     private readonly MrpApiConfig config;
     private HttpClient httpClient;
@@ -247,5 +247,19 @@ public class MrpApi
                 response.Data = dataXml;
                 return response;
         }
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            this.httpClient.Dispose();
+        }
+    }
+
+    public void Dispose()
+    {
+        this.Dispose(true);
+        GC.SuppressFinalize(this);
     }
 }

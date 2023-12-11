@@ -1,6 +1,7 @@
 namespace MRP;
 
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -208,7 +209,7 @@ public class MrpApi
 
         if (responseData.Status.Error != null)
         {
-            response.ErrorCode = int.Parse(responseData.Status.Error.ErrorCode);
+            response.ErrorCode = int.Parse(responseData.Status.Error.ErrorCode, CultureInfo.InvariantCulture);
             response.ErrorClass = responseData.Status.Error.ErrorClass;
             response.ErrorMessage = responseData.Status.Error.ErrorMessage;
             return response;

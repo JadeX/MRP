@@ -2,6 +2,7 @@ namespace MRP.Xml;
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Xml.Serialization;
 using MRP.Commands;
 
@@ -58,5 +59,5 @@ public class Request
     public MrpCommands Command { get; set; }
 
     [XmlAttribute("requestId")]
-    public string RequestId { get; set; } = DateTime.UtcNow.ToString("yyyyMMddHHmmssfff");
+    public string RequestId { get; set; } = DateTime.UtcNow.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
 }

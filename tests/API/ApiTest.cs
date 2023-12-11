@@ -29,6 +29,6 @@ public class ApiTest
 
         Skip.If(response.ErrorMessage.Contains("nemá povoleno obsloužení"), response.ErrorMessage);
 
-        throw new Exception(response.ErrorMessage);
+        throw new InvalidOperationException(response.ErrorMessage);
     }
 }

@@ -3,16 +3,29 @@
   <PropertyGroup>
     <RootNamespace>MRP</RootNamespace>
     <LangVersion>latest</LangVersion>
-    <Version>1.0.0-beta.3</Version>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <EnablePackageValidation>true</EnablePackageValidation>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Company>JadeX</Company>
     <Authors>Xeevis</Authors>
-    <Title>MRP</Title>
-    <Product>MRP</Product>
-    <Copyright>JadeX</Copyright>
+    <Company>JadeX</Company>
+    <Copyright>Copyright (c) JadeX 2023</Copyright>
+    <Description>Neoficiální implementace API pro komunikaci s účetním systémem MRP-K/S pomocí autonomního režimu s podporou šifrování a komprese.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>ucetni eet gdpr api evidence eshop mrp</PackageTags>
+    <RepositoryUrl>https://github.com/JadeX/MRP/</RepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
 </Project>

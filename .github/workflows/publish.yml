@@ -1,0 +1,75 @@
+name: publish
+on:
+  push:
+    branches:
+      - "master"
+  pull_request:
+    branches:
+      - "*"
+  release:
+    types:
+      - published
+
+env:
+  DOTNET_NOLOGO: true
+  NuGetDirectory: ${{github.workspace}}/nuget
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v4
+      - name: Create NuGet Package
+        run: dotnet pack --configuration Release --output ${{env.NuGetDirectory}} /p:Version=${{github.event.release.tag_name}} /p:PackageReleaseNotes="See https://github.com/JadeX/MRP/releases/tag/${{github.event.release.tag_name}}"
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: nuget
+          if-no-files-found: error
+          retention-days: 7
+          path: ${{env.NuGetDirectory}}/*.nupkg
+  validate:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v4
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: nuget
+          path: ${{env.NuGetDirectory}}
+      - name: Install NuGet validator
+        run: dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
+      # Validate metadata and content of the NuGet package
+      # https://www.nuget.org/packages/Meziantou.Framework.NuGetPackageValidation.Tool#readme-body-tab
+      - name: Validate package
+        run: meziantou.validate-nuget-package (Get-ChildItem "${{env.NuGetDirectory}}/*.nupkg")
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v4
+      - name: Run tests
+        run: dotnet test --configuration Release --filter "FullyQualifiedName~MRP.Tests.Lib"
+  deploy:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    needs: [validate, test]
+    steps:
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v4
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: nuget
+          path: ${{env.NuGetDirectory}}
+      - name: Publish to NuGet.org
+        run: dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      - name: Publish to GPR
+        run: dotnet nuget push **/*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/JadeX/index.json --skip-duplicate

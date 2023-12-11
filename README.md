@@ -3,8 +3,9 @@
 [![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/JadeX/MRP/blob/master/LICENSE.txt)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/MRP.svg)](https://www.nuget.org/packages/MRP/)
 [![NuGet](https://img.shields.io/nuget/vpre/MRP.svg)](https://www.nuget.org/packages/MRP/)
-[![.NET Standard](https://img.shields.io/badge/NETStandard-2.0+-blue.svg)](javascript:)
-[![.NET 5](https://img.shields.io/badge/NET-5.0-blue.svg)](javascript:)
+[![.NET Standard](https://img.shields.io/badge/NETStandard-2.0/2.1-blue.svg)](javascript:)
+[![.NET 6-8](https://img.shields.io/badge/NET-6.0--8.0-purple.svg)](javascript:)
+[![publish](https://github.com/JadeX/MRP/actions/workflows/publish.yml/badge.svg)](https://github.com/JadeX/MRP/actions/workflows/publish.yml)
 
 Neoficiální implementace API pro komunikaci s účetním systémem MRP-K/S pomocí autonomního režimu s podporou šifrování a komprese.
 [https://www.mrp.cz/software/ucetnictvi/ks/autonomni-rezim.asp](https://www.mrp.cz/software/ucetnictvi/ks/autonomni-rezim.asp)

@@ -5,13 +5,13 @@ using MRP.Xml.Datasets;
 
 public class EXPEO1 : Response
 {
-    public List<MrpCategory> Categories { get; set; } = new List<MrpCategory>();
+    public List<MrpCategory> Categories { get; set; } = [];
 
-    public List<MrpProduct> Products { get; set; } = new List<MrpProduct>();
+    public List<MrpProduct> Products { get; set; } = [];
 
-    public List<MrpReplacement> Replacements { get; set; } = new List<MrpReplacement>();
+    public List<MrpReplacement> Replacements { get; set; } = [];
 
-    public List<MrpStock> Stocks { get; set; } = new List<MrpStock>();
+    public List<MrpStock> Stocks { get; set; } = [];
 
-    public List<MrpWarehouse> Warehouses { get; set; } = new List<MrpWarehouse>();
+    public List<MrpWarehouse> Warehouses { get; set; } = [];
 }

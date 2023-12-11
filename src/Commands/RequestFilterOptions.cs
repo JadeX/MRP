@@ -5,7 +5,7 @@ using MRP.Xml;
 
 public class RequestFilterOptions
 {
-    public List<NameValueItem> FilterItems { get; private set; } = new List<NameValueItem>();
+    public List<NameValueItem> FilterItems { get; private set; } = [];
 
     public RequestFilterOptions Filter(string name, string value)
     {

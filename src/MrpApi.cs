@@ -82,7 +82,7 @@ public class MrpApi
             if (this.config.UseEncryption)
             {
                 mrpEnvelope.EncodedBody.Authentication = "hmac_sha256";
-                mrpEnvelope.EncodedBody.AuthCode = crypto.SignData(encodingParams.Concat(data).ToArray());
+                mrpEnvelope.EncodedBody.AuthCode = crypto.SignData([.. encodingParams, .. data]);
             }
         }
         else
@@ -129,7 +129,7 @@ public class MrpApi
         using (var writer = XmlWriter.Create(sw, new XmlWriterSettings() { Indent = true, OmitXmlDeclaration = true }))
         {
             var s = new XmlSerializer(typeof(T));
-            s.Serialize(writer, xmlData, new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty }));
+            s.Serialize(writer, xmlData, new XmlSerializerNamespaces([XmlQualifiedName.Empty]));
         }
 
         return sw.ToString();

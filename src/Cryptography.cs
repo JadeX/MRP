@@ -27,11 +27,11 @@ public class Cryptography
         }
     }
 
-    private byte[] AuthenticationKey => HmacSha256(this.SecretKey, this.PrivateEncryptionKey.Concat(new byte[] { 0x02 }).ToArray());
+    private byte[] AuthenticationKey => HmacSha256(this.SecretKey, [.. this.PrivateEncryptionKey, .. new byte[] { 0x02 }]);
 
     private byte[] EncryptionKey => HmacSha256(this.PrivateEncryptionKey, this.VariantKey);
 
-    private byte[] PrivateEncryptionKey => HmacSha256(this.SecretKey, new byte[] { 0x01 });
+    private byte[] PrivateEncryptionKey => HmacSha256(this.SecretKey, [0x01]);
 
     private byte[] SecretKey { get; set; }
 
@@ -74,7 +74,7 @@ public class Cryptography
         var encodingParams = Convert.FromBase64String(envelope.EncodedBody.EncodingParams);
         var encodedData = Convert.FromBase64String(envelope.EncodedBody.EncodedData);
 
-        return envelope.EncodedBody.AuthCode == this.SignData(encodingParams.Concat(encodedData).ToArray());
+        return envelope.EncodedBody.AuthCode == this.SignData([.. encodingParams, .. encodedData]);
     }
 
     private static byte[] HmacSha256(byte[] key, byte[] payload)

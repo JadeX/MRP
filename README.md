@@ -76,9 +76,18 @@ V celkové hodnotě 44793 CZK s DPH.
 
 Testy API vyžadují tajné parametry, které se načítají z UserSecrets nebo EnvironmentVariables.
 
+### User Secrets
+
 ```sh
 PM> dotnet user-secrets set SecretKey xxxXXXxXxXxxXXxXXxxxXXxXXxXXxXXxxXXxXXXxXXX= --project MRP.Tests
 PM> dotnet user-secrets set ApiUrl http://xxx.xxx.xxx.xxx:ppppp --project MRP.Tests
+```
+
+### .devcontainer/devcontainer.env
+
+```
+SecretKey = xxxXXXxXxXxxXXxXXxxxXXxXXxXXxXXxxXXxXXXxXXX=
+ApiUrl = http://xxx.xxx.xxx.xxx:ppppp
 ```
 
 \*Testy ověřují pouze zda byla úspěšná komunikace se serverem a zda byl vrácen alespoň nějaký výsledek.

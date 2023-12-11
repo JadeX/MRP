@@ -91,14 +91,18 @@ public class Cryptography
     {
         byte[] iV;
 
+#if NETSTANDARD
         using (var sha = SHA256.Create())
         {
-            iV = sha.ComputeHash(this.VariantKey).Take(16).ToArray();
+            iV = sha.ComputeHash(this.VariantKey);
         }
+#else
+        iV = SHA256.HashData(this.VariantKey);
+#endif
 
         var cipher = CipherUtilities.GetCipher("AES/CTR/NoPadding");
 
-        cipher.Init(encrypt, new ParametersWithIV(ParameterUtilities.CreateKeyParameter("AES", this.EncryptionKey), iV));
+        cipher.Init(encrypt, new ParametersWithIV(ParameterUtilities.CreateKeyParameter("AES", this.EncryptionKey), iV.Take(16).ToArray()));
 
         return cipher.DoFinal(data);
     }

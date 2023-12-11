@@ -1,14 +1,13 @@
-namespace MRP.Xml.Datasets
+namespace MRP.Xml.Datasets;
+
+using System.Xml.Serialization;
+
+[XmlRoot("fields")]
+public class MrpWarehouse
 {
-    using System.Xml.Serialization;
+    [XmlElement("cisloskl")]
+    public int CisloSkl { get; set; }
 
-    [XmlRoot("fields")]
-    public class MrpWarehouse
-    {
-        [XmlElement("cisloskl")]
-        public int CisloSkl { get; set; }
-
-        [XmlElement("nazevskl")]
-        public string NazevSkl { get; set; }
-    }
+    [XmlElement("nazevskl")]
+    public string NazevSkl { get; set; }
 }

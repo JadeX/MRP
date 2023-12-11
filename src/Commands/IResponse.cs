@@ -1,17 +1,16 @@
-namespace MRP.Commands
+namespace MRP.Commands;
+
+using System.Xml.Linq;
+
+public interface IResponse
 {
-    using System.Xml.Linq;
+    XDocument Data { get; set; }
 
-    public interface IResponse
-    {
-        XDocument Data { get; set; }
+    string ErrorClass { get; set; }
 
-        string ErrorClass { get; set; }
+    int ErrorCode { get; set; }
 
-        int ErrorCode { get; set; }
+    string ErrorMessage { get; set; }
 
-        string ErrorMessage { get; set; }
-
-        bool HasError { get; }
-    }
+    bool HasError { get; }
 }

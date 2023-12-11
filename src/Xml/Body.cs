@@ -1,13 +1,12 @@
-namespace MRP.Xml
+namespace MRP.Xml;
+
+using System.Xml.Serialization;
+
+public class Body
 {
-    using System.Xml.Serialization;
+    [XmlElement("mrpRequest")]
+    public MrpRequest MrpRequest { get; set; }
 
-    public class Body
-    {
-        [XmlElement("mrpRequest")]
-        public MrpRequest MrpRequest { get; set; }
-
-        [XmlElement("mrpResponse")]
-        public MrpResponse MrpResponse { get; set; }
-    }
+    [XmlElement("mrpResponse")]
+    public MrpResponse MrpResponse { get; set; }
 }

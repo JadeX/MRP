@@ -1,9 +1,8 @@
-namespace MRP.Commands
+namespace MRP.Commands;
+
+public enum MrpCommands
 {
-    public enum MrpCommands
-    {
-        EXPEO0,
-        EXPEO1,
-        CENEO0
-    }
+    EXPEO0,
+    EXPEO1,
+    CENEO0
 }

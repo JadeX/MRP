@@ -1,17 +1,16 @@
-namespace MRP.Commands
+namespace MRP.Commands;
+
+using System.Collections.Generic;
+using MRP.Xml;
+
+public class RequestFilterOptions
 {
-    using System.Collections.Generic;
-    using MRP.Xml;
+    public List<NameValueItem> FilterItems { get; private set; } = new List<NameValueItem>();
 
-    public class RequestFilterOptions
+    public RequestFilterOptions Filter(string name, string value)
     {
-        public List<NameValueItem> FilterItems { get; private set; } = new List<NameValueItem>();
+        this.FilterItems.Add(new NameValueItem() { Name = name, Value = value });
 
-        public RequestFilterOptions Filter(string name, string value)
-        {
-            this.FilterItems.Add(new NameValueItem() { Name = name, Value = value });
-
-            return this;
-        }
+        return this;
     }
 }

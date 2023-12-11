@@ -1,4 +1,4 @@
-namespace MRP.Tests;
+namespace MRP.Tests.Library;
 
 using System;
 using MRP;

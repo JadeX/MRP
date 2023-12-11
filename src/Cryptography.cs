@@ -22,8 +22,12 @@ public class Cryptography
         }
         else
         {
+#if NETSTANDARD2_0
             using var rng = new RNGCryptoServiceProvider();
             rng.GetBytes(this.VariantKey);
+#else
+            RandomNumberGenerator.Fill(this.VariantKey);
+#endif
         }
     }
 

@@ -115,23 +115,23 @@ public class MrpApi : IDisposable
 
     private static T DeserializeFromXmlString<T>(string xmlData)
     {
-        using var sr = new StringReader(xmlData);
-        using var xmlReader = XmlReader.Create(sr);
-        var s = new XmlSerializer(typeof(T));
+        using var stringReader = new StringReader(xmlData);
+        using var xmlReader = XmlReader.Create(stringReader);
+        var xmlSerializer = new XmlSerializer(typeof(T));
 
-        return (T)s.Deserialize(xmlReader);
+        return (T)xmlSerializer.Deserialize(xmlReader);
     }
 
     private static string SerializeToXmlString<T>(object xmlData)
     {
-        using var sw = new StringWriter();
-        using (var writer = XmlWriter.Create(sw, new XmlWriterSettings() { Indent = true, OmitXmlDeclaration = true }))
+        using var stringWriter = new StringWriter();
+        using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings() { Indent = true, OmitXmlDeclaration = true }))
         {
-            var s = new XmlSerializer(typeof(T));
-            s.Serialize(writer, xmlData, new XmlSerializerNamespaces([XmlQualifiedName.Empty]));
+            var xmlSerializer = new XmlSerializer(typeof(T));
+            xmlSerializer.Serialize(xmlWriter, xmlData, new XmlSerializerNamespaces([XmlQualifiedName.Empty]));
         }
 
-        return sw.ToString();
+        return stringWriter.ToString();
     }
 
     private MrpResponse ParseResponseData(MrpEnvelope mrpEnvelope)

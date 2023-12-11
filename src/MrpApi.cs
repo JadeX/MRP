@@ -116,9 +116,10 @@ public class MrpApi : IDisposable
     private static T DeserializeFromXmlString<T>(string xmlData)
     {
         using var sr = new StringReader(xmlData);
+        using var xmlReader = XmlReader.Create(sr);
         var s = new XmlSerializer(typeof(T));
 
-        return (T)s.Deserialize(sr);
+        return (T)s.Deserialize(xmlReader);
     }
 
     private static string SerializeToXmlString<T>(object xmlData)

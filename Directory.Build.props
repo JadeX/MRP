@@ -18,14 +18,12 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>ucetni eet gdpr api evidence eshop mrp</PackageTags>
-    <RepositoryUrl>https://github.com/JadeX/MRP/</RepositoryUrl>
+    <RepositoryUrl>https://github.com/JadeX/MRP</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/JadeX/MRP</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1" PrivateAssets="All"/>
   </ItemGroup>
 
 </Project>

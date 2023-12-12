@@ -1,9 +1,9 @@
-namespace MRP.Tests;
+namespace JadeX.MRP.Tests;
 
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using MRP.Commands;
+using JadeX.MRP.Commands;
 using Xunit;
 
 public class ApiTest

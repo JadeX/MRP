@@ -1,4 +1,4 @@
-namespace MRP;
+namespace JadeX.MRP;
 
 using System;
 using SharpCompress.Compressors.Deflate;

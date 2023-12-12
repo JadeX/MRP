@@ -1,10 +1,10 @@
-namespace MRP.Xml;
+namespace JadeX.MRP.Xml;
 
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Xml.Serialization;
-using MRP.Commands;
+using JadeX.MRP.Commands;
 
 public class Data
 {

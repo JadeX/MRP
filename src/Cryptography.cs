@@ -1,9 +1,9 @@
-namespace MRP;
+namespace JadeX.MRP;
 
 using System;
 using System.Linq;
 using System.Security.Cryptography;
-using MRP.Xml;
+using JadeX.MRP.Xml;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Security;
 

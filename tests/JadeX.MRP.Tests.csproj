@@ -17,6 +17,6 @@
     <PackageReference Include="Xunit.SkippableFact" Version="1.4.13" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\MRP.csproj" />
+    <ProjectReference Include="..\src\JadeX.MRP.csproj" />
   </ItemGroup>
 </Project>

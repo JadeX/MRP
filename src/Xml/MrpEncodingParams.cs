@@ -1,4 +1,4 @@
-namespace MRP.Xml;
+namespace JadeX.MRP.Xml;
 
 using System.Xml.Serialization;
 

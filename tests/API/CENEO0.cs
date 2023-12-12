@@ -1,4 +1,4 @@
-namespace MRP.Tests.API;
+namespace JadeX.MRP.Tests.API;
 
 using System.Threading.Tasks;
 using Shouldly;

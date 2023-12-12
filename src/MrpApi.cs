@@ -1,4 +1,4 @@
-namespace MRP;
+namespace JadeX.MRP;
 
 using System;
 using System.Globalization;
@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using MRP.Commands;
-using MRP.Xml;
-using MRP.Xml.Datasets;
+using JadeX.MRP.Commands;
+using JadeX.MRP.Xml;
+using JadeX.MRP.Xml.Datasets;
 using SharpCompress.Compressors.Deflate;
 
 public class MrpApi : IDisposable

@@ -1,4 +1,4 @@
-namespace MRP.Commands;
+namespace JadeX.MRP.Commands;
 
 using System.Collections.Generic;
 using MRP.Xml;

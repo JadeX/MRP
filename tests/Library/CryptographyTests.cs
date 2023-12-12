@@ -1,7 +1,7 @@
 namespace MRP.Tests.Library;
 
 using System;
-using MRP;
+using JadeX.MRP;
 using Shouldly;
 using Xunit;
 

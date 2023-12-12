@@ -1,7 +1,7 @@
-namespace MRP.Commands;
+namespace JadeX.MRP.Commands;
 
 using System.Collections.Generic;
-using MRP.Xml.Datasets;
+using JadeX.MRP.Xml.Datasets;
 
 public class CENEO0 : Response
 {

@@ -77,9 +77,13 @@ jobs:
         with:
           name: nuget
           path: ${{env.NuGetDirectory}}
-      - name: Publish NuGet package NuGet.org
+      - name: Publish package to NuGet.org
         run: |
           foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
-              dotnet nuget push $file --api-key "${{secrets.NUGET_API_KEY}}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+              dotnet nuget push $file --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          }
+      - name: Publish package to GPR
+        run: |
+          foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
               dotnet nuget push $file --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/JadeX/index.json --skip-duplicate
           }

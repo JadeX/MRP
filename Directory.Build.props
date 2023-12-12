@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup>
-    <RootNamespace>MRP</RootNamespace>
+    <RootNamespace>JadeX.MRP</RootNamespace>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>

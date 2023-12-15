@@ -28,6 +28,8 @@ public class MrpApi : IDisposable
 
     public Task<EXPEO1> EXPEO1(Action<RequestFilterOptions> requestFilterOptions) => this.PostFilteredAsync<EXPEO1>(requestFilterOptions);
 
+    public Task<EXPOP0> EXPOP0(Action<RequestFilterOptions> requestFilterOptions) => this.PostFilteredAsync<EXPOP0>(requestFilterOptions);
+
     public Task<T> PostAsync<T>(XDocument requestData) where T : IResponse => this.PostAsync<T>(DeserializeFromXmlString<Data>(requestData.ToString()));
 
     public async Task<T> PostAsync<T>(Data requestData) where T : IResponse
@@ -244,6 +246,12 @@ public class MrpApi : IDisposable
                 };
                 goto default;
 
+            case MrpCommands.EXPOP0:
+                response = new EXPOP0()
+                {
+                    Order = dataXml.Descendants("objednavka").Select(x => DeserializeFromXmlString<MrpOrder>(x.ToString())).FirstOrDefault()
+                };
+                break;
             default:
                 response.Data = dataXml;
                 return response;

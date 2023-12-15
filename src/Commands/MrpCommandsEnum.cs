@@ -4,5 +4,6 @@ public enum MrpCommands
 {
     EXPEO0,
     EXPEO1,
-    CENEO0
+    CENEO0,
+    EXPOP0
 }

@@ -215,7 +215,7 @@ public class MrpApi : IDisposable
             return response;
         }
 
-        var dataXml = XDocument.Parse(responseData.Data.OuterXml);
+        var dataXml = string.IsNullOrEmpty(responseData.Data?.OuterXml) ? new XDocument() : XDocument.Parse(responseData.Data?.OuterXml);
 
         switch (responseData.Status.Request.Command)
         {
@@ -226,7 +226,7 @@ public class MrpApi : IDisposable
                     Products = dataXml.Descendants("karty").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpProduct>(x.ToString())).ToList(),
                     Replacements = dataXml.Descendants("nahrady").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpReplacement>(x.ToString())).ToList(),
                 };
-                goto default;
+                break;
 
             case MrpCommands.EXPEO1:
                 response = new EXPEO1()
@@ -237,14 +237,14 @@ public class MrpApi : IDisposable
                     Warehouses = dataXml.Descendants("sklady").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpWarehouse>(x.ToString())).ToList(),
                     Stocks = dataXml.Descendants("stavy").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpStock>(x.ToString())).ToList()
                 };
-                goto default;
+                break;
 
             case MrpCommands.CENEO0:
                 response = new CENEO0()
                 {
                     Prices = dataXml.Descendants("ceny").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpPrice>(x.ToString())).ToList()
                 };
-                goto default;
+                break;
 
             case MrpCommands.EXPOP0:
                 response = new EXPOP0()
@@ -253,9 +253,11 @@ public class MrpApi : IDisposable
                 };
                 break;
             default:
-                response.Data = dataXml;
-                return response;
+                break;
         }
+
+        response.Data = dataXml;
+        return response;
     }
 
     protected virtual void Dispose(bool disposing)

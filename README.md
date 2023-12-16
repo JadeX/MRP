@@ -16,15 +16,18 @@ Knihovna není dostatečně otestována v reálném nasazení a chybí serializa
 
 | Příkaz | Stav                                                                                    |
 | ------ | --------------------------------------------------------------------------------------- |
-| ADREO0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:) |
-| CENEO0 | [![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.2-yellow.svg)](javascript:)   |
-| EXPEO0 | [![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.1-yellow.svg)](javascript:)   |
-| EXPEO1 | [![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.1-yellow.svg)](javascript:)   |
-| EXPFP0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:) |
-| EXPFP1 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:) |
-| EXPFV0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:) |
-| EXPFV1 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:) |
-| IMPEO0 | [![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg)](javascript:) |
+| EXPEO0 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.1-yellow.svg)   |
+| EXPEO1 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.1-yellow.svg)   |
+| IMPEO0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
+| CENEO0 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.2-yellow.svg)   |
+| ADREO0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
+| EXPFV0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
+| EXPFV1 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
+| EXPFV2 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
+| EXPFVPDF | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
+| EXPFP0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
+| EXPFP1 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
+| EXPOP0 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--beta.5-yellow.svg) |
 
 ## Začínáme
 

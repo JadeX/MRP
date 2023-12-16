@@ -12,7 +12,7 @@ public class MrpCategory
     public int Idr { get; set; }
 
     [XmlElement("popis")]
-    public string Popis { get; set; }
+    public string? Popis { get; set; }
 
     [XmlElement("poradi")]
     public int Poradi { get; set; }

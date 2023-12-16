@@ -9,5 +9,5 @@ public class MrpWarehouse
     public int CisloSkl { get; set; }
 
     [XmlElement("nazevskl")]
-    public string NazevSkl { get; set; }
+    public string? NazevSkl { get; set; }
 }

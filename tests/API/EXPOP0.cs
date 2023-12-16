@@ -18,6 +18,6 @@ public class EXPOP0 : ApiTest
         await CheckResponseForErrors(response);
 
         _ = response.Order.ShouldNotBeNull();
-        response.Order.Polozky.Count.ShouldBeGreaterThanOrEqualTo(1);
+        response.Order?.Polozky?.Count.ShouldBeGreaterThanOrEqualTo(1);
     }
 }

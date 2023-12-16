@@ -9,38 +9,38 @@ using JadeX.MRP.Commands;
 public class Data
 {
     [XmlElement("filter")]
-    public Filter Filter { get; set; }
+    public Filter? Filter { get; set; }
 
     [XmlElement("objednavka")]
-    public Objednavka Objednavka { get; set; }
+    public Objednavka? Objednavka { get; set; }
 
     [XmlElement("params")]
-    public Params Params { get; set; }
+    public Params? Params { get; set; }
 }
 
 public class Filter
 {
     [XmlElement("fltvalue")]
-    public List<NameValueItem> Items { get; set; }
+    public List<NameValueItem>? Items { get; set; }
 }
 
 [XmlRoot("mrpRequest")]
 public class MrpRequest
 {
     [XmlElement("data")]
-    public Data Data { get; set; }
+    public Data? Data { get; set; }
 
     [XmlElement("request")]
-    public Request Request { get; set; }
+    public Request? Request { get; set; }
 }
 
 public class NameValueItem
 {
     [XmlAttribute("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [XmlText]
-    public string Value { get; set; }
+    public string? Value { get; set; }
 }
 
 public class Objednavka
@@ -50,7 +50,7 @@ public class Objednavka
 public class Params
 {
     [XmlElement("paramvalue")]
-    public List<NameValueItem> Items { get; set; }
+    public List<NameValueItem>? Items { get; set; }
 }
 
 public class Request

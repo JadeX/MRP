@@ -12,14 +12,14 @@ public class MrpReplacement
     public float CisloZ { get; set; }
 
     [XmlElement("kod")]
-    public string Kod { get; set; }
+    public string? Kod { get; set; }
 
     [XmlElement("kod_z")]
-    public string KodZ { get; set; }
+    public string? KodZ { get; set; }
 
     [XmlElement("kod1")]
-    public string Kod1 { get; set; }
+    public string? Kod1 { get; set; }
 
     [XmlElement("kod1_z")]
-    public string Kod1Z { get; set; }
+    public string? Kod1Z { get; set; }
 }

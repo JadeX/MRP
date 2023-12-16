@@ -6,13 +6,13 @@ using System.Xml.Serialization;
 public class EncodedBody
 {
     [XmlElement("authCode")]
-    public string AuthCode { get; set; }
+    public string? AuthCode { get; set; }
 
     [XmlAttribute("authentication")]
-    public string Authentication { get; set; }
+    public string? Authentication { get; set; }
 
     [XmlIgnore]
-    public string EncodedData { get; set; }
+    public string? EncodedData { get; set; }
 
     [XmlElement("encodedData")]
     public XmlCDataSection EncodedDataCData
@@ -22,7 +22,7 @@ public class EncodedBody
     }
 
     [XmlIgnore]
-    public string EncodingParams { get; set; }
+    public string? EncodingParams { get; set; }
 
     [XmlElement("encodingParams")]
     public XmlCDataSection EncodingParamsCData

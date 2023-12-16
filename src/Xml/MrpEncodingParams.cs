@@ -6,11 +6,11 @@ using System.Xml.Serialization;
 public class MrpEncodingParams
 {
     [XmlAttribute("compression")]
-    public string Compression { get; set; }
+    public string? Compression { get; set; }
 
     [XmlAttribute("encryption")]
-    public string Encryption { get; set; }
+    public string? Encryption { get; set; }
 
     [XmlElement("varKey")]
-    public string VarKey { get; set; }
+    public string? VarKey { get; set; }
 }

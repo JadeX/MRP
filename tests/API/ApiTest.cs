@@ -12,8 +12,8 @@ public class ApiTest
     {
         var configuration = new ConfigurationBuilder().AddUserSecrets<ApiTest>().AddEnvironmentVariables().Build();
 
-        this.MrpApi = new MrpApi(new Uri(configuration["ApiUrl"]).AbsoluteUri)
-            .WithEncryption(configuration["SecretKey"])
+        this.MrpApi = new MrpApi(new Uri(configuration["ApiUrl"] ?? throw new InvalidOperationException()).AbsoluteUri)
+            .WithEncryption(configuration["SecretKey"] ?? throw new InvalidOperationException())
             .WithCompression()
             .WithTimeout(TimeSpan.FromSeconds(10));
     }
@@ -27,7 +27,7 @@ public class ApiTest
             return Task.CompletedTask;
         }
 
-        Skip.If(response.ErrorMessage.Contains("nemá povoleno obsloužení"), response.ErrorMessage);
+        Skip.If((response.ErrorMessage?.Contains("nemá povoleno obsloužení")).HasValue, response.ErrorMessage);
 
         throw new InvalidOperationException(response.ErrorMessage);
     }

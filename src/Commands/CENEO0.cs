@@ -5,5 +5,5 @@ using JadeX.MRP.Xml.Datasets;
 
 public class CENEO0 : Response
 {
-    public List<MrpPrice> Prices { get; set; } = [];
+    public List<MrpPrice>? Prices { get; set; }
 }

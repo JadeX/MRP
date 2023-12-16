@@ -9,12 +9,14 @@ using Org.BouncyCastle.Security;
 
 public class Cryptography
 {
-    public Cryptography(string secretKey, string variantKey = null)
+    public Cryptography(string secretKey, string? variantKey = null)
     {
-        if (!string.IsNullOrEmpty(secretKey))
+        if (string.IsNullOrEmpty(secretKey))
         {
-            this.SecretKey = Convert.FromBase64String(secretKey);
+            throw new ArgumentNullException(nameof(secretKey));
         }
+
+        this.SecretKey = Convert.FromBase64String(secretKey);
 
         if (variantKey != null)
         {
@@ -75,10 +77,15 @@ public class Cryptography
     /// <returns>True if valid.</returns>
     public bool VerifyEnvelopeSignature(MrpEnvelope envelope)
     {
+        if (envelope.EncodedBody?.EncodingParams is null || envelope.EncodedBody?.EncodedData is null)
+        {
+            return false;
+        }
+
         var encodingParams = Convert.FromBase64String(envelope.EncodedBody.EncodingParams);
         var encodedData = Convert.FromBase64String(envelope.EncodedBody.EncodedData);
 
-        return envelope.EncodedBody.AuthCode == this.SignData([.. encodingParams, .. encodedData]);
+        return envelope.EncodedBody?.AuthCode == this.SignData([.. encodingParams, .. encodedData]);
     }
 
     private static byte[] HmacSha256(byte[] key, byte[] payload)

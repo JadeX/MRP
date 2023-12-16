@@ -18,7 +18,7 @@ using SharpCompress.Compressors.Deflate;
 public class MrpApi : IDisposable
 {
     private readonly MrpApiConfig config;
-    private HttpClient httpClient;
+    private readonly HttpClient httpClient = new();
 
     public MrpApi(string url) => this.config = new MrpApiConfig() { Url = url };
 
@@ -34,11 +34,14 @@ public class MrpApi : IDisposable
 
     public async Task<T> PostAsync<T>(Data requestData) where T : IResponse
     {
-        this.httpClient ??= new HttpClient();
-
         if (this.config.Timeout != default)
         {
             this.httpClient.Timeout = this.config.Timeout;
+        }
+
+        if (this.config.SecretKey is null)
+        {
+            throw new InvalidOperationException("Missing secret key");
         }
 
         var crypto = new Cryptography(this.config.SecretKey);
@@ -121,7 +124,9 @@ public class MrpApi : IDisposable
         using var xmlReader = XmlReader.Create(stringReader);
         var xmlSerializer = new XmlSerializer(typeof(T));
 
-        return (T)xmlSerializer.Deserialize(xmlReader);
+        var result = (T?)xmlSerializer.Deserialize(xmlReader) ?? throw new InvalidOperationException("Received data can't be deserialized");
+
+        return result;
     }
 
     private static string SerializeToXmlString<T>(object xmlData)
@@ -143,7 +148,17 @@ public class MrpApi : IDisposable
             return mrpEnvelope.Body.MrpResponse;
         }
 
+        if (mrpEnvelope.EncodedBody?.EncodedData is null)
+        {
+            throw new InvalidOperationException("Response is missing data");
+        }
+
         var data = Convert.FromBase64String(mrpEnvelope.EncodedBody.EncodedData);
+
+        if (mrpEnvelope.EncodedBody?.EncodingParams is null)
+        {
+            throw new InvalidOperationException("Response is missing encoding parameters");
+        }
 
         var responseParams = DeserializeFromXmlString<MrpEncodingParams>(Encoding.UTF8.GetString(Convert.FromBase64String(mrpEnvelope.EncodedBody.EncodingParams)));
 
@@ -155,6 +170,11 @@ public class MrpApi : IDisposable
                  * Happens when server is set to require encryption, but request was plaintext.
                  * Let's just assume response contained error requesting encrypted/authenticated communication. */
                 return new MrpResponse() { Status = new Status() { Error = new MrpError() { ErrorCode = "-1", ErrorClass = "", ErrorMessage = "Je vyžadována autentizace." } } };
+            }
+
+            if (this.config.SecretKey is null)
+            {
+                throw new InvalidOperationException("Missing secret key");
             }
 
             var crypto = new Cryptography(this.config.SecretKey, responseParams.VarKey);
@@ -207,7 +227,7 @@ public class MrpApi : IDisposable
 
         var responseData = this.ParseResponseData(mrpEnvelope);
 
-        if (responseData.Status.Error != null)
+        if (responseData.Status?.Error?.ErrorCode != null)
         {
             response.ErrorCode = int.Parse(responseData.Status.Error.ErrorCode, CultureInfo.InvariantCulture);
             response.ErrorClass = responseData.Status.Error.ErrorClass;
@@ -215,9 +235,9 @@ public class MrpApi : IDisposable
             return response;
         }
 
-        var dataXml = string.IsNullOrEmpty(responseData.Data?.OuterXml) ? new XDocument() : XDocument.Parse(responseData.Data?.OuterXml);
+        var dataXml = XDocument.Parse(responseData.Data?.OuterXml ?? "");
 
-        switch (responseData.Status.Request.Command)
+        switch (responseData.Status?.Request?.Command)
         {
             case MrpCommands.EXPEO0:
                 response = new EXPEO0()

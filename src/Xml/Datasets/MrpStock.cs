@@ -48,7 +48,7 @@ public class MrpStock
     public float Kod { get; set; }
 
     [XmlElement("mena")]
-    public string Mena { get; set; }
+    public string? Mena { get; set; }
 
     [XmlElement("pocetmj")]
     public float PocetMJ { get; set; }
@@ -60,5 +60,5 @@ public class MrpStock
     public float PocRezMJ { get; set; }
 
     [XmlElement("pozice")]
-    public string Pozice { get; set; }
+    public string? Pozice { get; set; }
 }

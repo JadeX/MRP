@@ -54,31 +54,31 @@ public class MrpProduct
     public float Hmotnost { get; set; }
 
     [XmlElement("jednotka")]
-    public string Jednotka { get; set; }
+    public string? Jednotka { get; set; }
 
     [XmlElement("kod")]
-    public string Kod { get; set; }
+    public string? Kod { get; set; }
 
     [XmlElement("kod1")]
-    public string Kod1 { get; set; }
+    public string? Kod1 { get; set; }
 
     [XmlElement("malobr")]
-    public string MalObr { get; set; }
+    public string? MalObr { get; set; }
 
     [XmlElement("malobraz")]
-    public string MalObraz { get; set; }
+    public string? MalObraz { get; set; }
 
     [XmlElement("malpopis")]
-    public string MalPopis { get; set; }
+    public string? MalPopis { get; set; }
 
     [XmlElement("mena")]
-    public string Mena { get; set; }
+    public string? Mena { get; set; }
 
     [XmlElement("nazev")]
-    public string Nazev { get; set; }
+    public string? Nazev { get; set; }
 
     [XmlElement("nazev2")]
-    public string Nazev2 { get; set; }
+    public string? Nazev2 { get; set; }
 
     [XmlElement("pocetmj")]
     public float PocetMJ { get; set; }
@@ -90,41 +90,41 @@ public class MrpProduct
     public float PocRezMJ { get; set; }
 
     [XmlElement("pozice")]
-    public string Pozice { get; set; }
+    public string? Pozice { get; set; }
 
     [XmlElement("poznamka")]
-    public string Poznamka { get; set; }
+    public string? Poznamka { get; set; }
 
     [XmlElement("sazbadph")]
     public float SazbaDPH { get; set; }
 
     [XmlElement("skupina")]
-    public string Skupina { get; set; }
+    public string? Skupina { get; set; }
 
     [XmlElement("skupnazev")]
-    public string SkupNazev { get; set; }
+    public string? SkupNazev { get; set; }
 
     [XmlElement("usrfld1")]
-    public string UsrFld1 { get; set; }
+    public string? UsrFld1 { get; set; }
 
     [XmlElement("usrfld2")]
-    public string UsrFld2 { get; set; }
+    public string? UsrFld2 { get; set; }
 
     [XmlElement("usrfld3")]
-    public string UsrFld3 { get; set; }
+    public string? UsrFld3 { get; set; }
 
     [XmlElement("usrfld4")]
-    public string UsrFld4 { get; set; }
+    public string? UsrFld4 { get; set; }
 
     [XmlElement("usrfld5")]
-    public string UsrFld5 { get; set; }
+    public string? UsrFld5 { get; set; }
 
     [XmlElement("velobr")]
-    public string VelObr { get; set; }
+    public string? VelObr { get; set; }
 
     [XmlElement("velobraz")]
-    public string VelObraz { get; set; }
+    public string? VelObraz { get; set; }
 
     [XmlElement("velpopis")]
-    public string VelPopis { get; set; }
+    public string? VelPopis { get; set; }
 }

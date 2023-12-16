@@ -7,8 +7,8 @@ using System.Xml.Serialization;
 public class MrpEnvelope
 {
     [XmlElement("body")]
-    public Body Body { get; set; }
+    public Body? Body { get; set; }
 
     [XmlElement("encodedBody")]
-    public EncodedBody EncodedBody { get; set; }
+    public EncodedBody? EncodedBody { get; set; }
 }

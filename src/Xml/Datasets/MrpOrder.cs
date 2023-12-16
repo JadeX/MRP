@@ -8,10 +8,10 @@ using System.Xml.Serialization;
 public class MrpOrder
 {
     [XmlAttribute("cisloObj")]
-    public string CisloObj { get; set; }
+    public string? CisloObj { get; set; }
 
     [XmlAttribute("puvodniCislo")]
-    public string PuvodniCislo { get; set; }
+    public string? PuvodniCislo { get; set; }
 
     [XmlAttribute("datum")]
     public DateTime Datum { get; set; }
@@ -20,17 +20,17 @@ public class MrpOrder
     public int Stav { get; set; }
 
     [XmlAttribute("usrLock")]
-    public string UsrLock { get; set; }
+    public string? UsrLock { get; set; }
 
     [XmlAttribute("ico")]
-    public string Ico { get; set; }
+    public string? Ico { get; set; }
 
     [XmlAttribute("nabidka")]
-    public string Nabidka { get; set; }
+    public string? Nabidka { get; set; }
 
     [XmlArray("polozky")]
     [XmlArrayItem("polozka")]
-    public List<MrpOrderItem> Polozky { get; set; }
+    public List<MrpOrderItem>? Polozky { get; set; }
 }
 
 public class MrpOrderItem
@@ -42,14 +42,14 @@ public class MrpOrderItem
     public int VybavitMJ { get; set; }
 
     [XmlAttribute("text")]
-    public string Text { get; set; }
+    public string? Text { get; set; }
 
     [XmlAttribute("cisloKarty")]
     public int CisloKarty { get; set; }
 
     [XmlAttribute(attributeName: "eanKarty")]
-    public string EanKarty { get; set; }
+    public string? EanKarty { get; set; }
 
     [XmlAttribute("kodKarty")]
-    public string KodKarty { get; set; }
+    public string? KodKarty { get; set; }
 }

@@ -6,30 +6,30 @@ using System.Xml.Serialization;
 public class MrpError
 {
     [XmlAttribute("errorClass")]
-    public string ErrorClass { get; set; }
+    public string? ErrorClass { get; set; }
 
     [XmlAttribute("errorCode")]
-    public string ErrorCode { get; set; }
+    public string? ErrorCode { get; set; }
 
     [XmlElement("errorMessage")]
-    public string ErrorMessage { get; set; }
+    public string? ErrorMessage { get; set; }
 }
 
 [XmlRoot("mrpResponse")]
 public class MrpResponse
 {
     [XmlElement("data")]
-    public XmlNode Data { get; set; }
+    public XmlNode? Data { get; set; }
 
     [XmlElement("status")]
-    public Status Status { get; set; }
+    public Status? Status { get; set; }
 }
 
 public class Status
 {
     [XmlElement("error")]
-    public MrpError Error { get; set; }
+    public MrpError? Error { get; set; }
 
     [XmlElement("request")]
-    public Request Request { get; set; }
+    public Request? Request { get; set; }
 }

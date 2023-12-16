@@ -15,7 +15,7 @@ public class MrpPrice
     public int CisloCeny { get; set; }
 
     [XmlElement("mena")]
-    public string Mena { get; set; }
+    public string? Mena { get; set; }
 
     [XmlElement("slevamj")]
     public float SlevaMJ { get; set; }

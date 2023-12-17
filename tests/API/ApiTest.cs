@@ -27,7 +27,9 @@ public class ApiTest
             return Task.CompletedTask;
         }
 
-        Skip.If((response.ErrorMessage?.Contains("nemá povoleno obsloužení")).HasValue, response.ErrorMessage);
+        var commandDisabled = response.ErrorMessage?.Contains("nemá povoleno obsloužení");
+
+        Skip.If(commandDisabled.HasValue && commandDisabled.Value, response.ErrorMessage);
 
         throw new InvalidOperationException(response.ErrorMessage);
     }

@@ -30,6 +30,8 @@ public class MrpApi : IDisposable
 
     public Task<EXPOP0> EXPOP0(Action<RequestFilterOptions> requestFilterOptions) => this.PostFilteredAsync<EXPOP0>(requestFilterOptions);
 
+    public Task<IMPEO0> IMPEO0(Action<RequestOrdersOptions> requestOrderOptions) => this.PostOrdersAsync<IMPEO0>(requestOrderOptions);
+
     public Task<T> PostAsync<T>(XDocument requestData) where T : IResponse => this.PostAsync<T>(DeserializeFromXmlString<Data>(requestData.ToString()));
 
     public async Task<T> PostAsync<T>(Data requestData) where T : IResponse
@@ -211,6 +213,22 @@ public class MrpApi : IDisposable
         });
     }
 
+    private Task<T> PostOrdersAsync<T>(Action<RequestOrdersOptions> requestOrdersOptions) where T : IResponse
+    {
+        var orders = new RequestOrdersOptions();
+
+        requestOrdersOptions(orders);
+
+        return this.PostAsync<T>(new Data()
+        {
+            Orders = orders.OrderItems,
+            Params = new Params()
+            {
+                Items = orders.ParamItems
+            }
+        });
+    }
+
     private async Task<IResponse> ProcessResponseAsync<T>(HttpResponseMessage httpResponse) where T : IResponse
     {
         IResponse response = Activator.CreateInstance<T>();
@@ -270,6 +288,12 @@ public class MrpApi : IDisposable
                 response = new EXPOP0()
                 {
                     Order = dataXml.Descendants("objednavka").Select(x => DeserializeFromXmlString<MrpOrderInfo>(x.ToString())).FirstOrDefault()
+                };
+                break;
+            case MrpCommands.IMPEO0:
+                response = new IMPEO0()
+                {
+                    OrderIds = dataXml.Descendants("objednavka").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpOrderId>(x.ToString())).ToList()
                 };
                 break;
             default:

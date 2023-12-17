@@ -7,7 +7,7 @@ using Xunit;
 public class EXPOP0 : ApiTest
 {
     [SkippableFact]
-    public async Task GetOrder()
+    public async Task GetOrderInfo()
     {
         var response = await this.MrpApi.EXPOP0(x => x
             .Filter("OBJPR.CISLO", "*")

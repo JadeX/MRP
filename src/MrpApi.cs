@@ -269,7 +269,7 @@ public class MrpApi : IDisposable
             case MrpCommands.EXPOP0:
                 response = new EXPOP0()
                 {
-                    Order = dataXml.Descendants("objednavka").Select(x => DeserializeFromXmlString<MrpOrder>(x.ToString())).FirstOrDefault()
+                    Order = dataXml.Descendants("objednavka").Select(x => DeserializeFromXmlString<MrpOrderInfo>(x.ToString())).FirstOrDefault()
                 };
                 break;
             default:

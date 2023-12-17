@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 
 [XmlRoot("objednavka")]
-public class MrpOrder
+public class MrpOrderInfo
 {
     [XmlAttribute("cisloObj")]
     public string? CisloObj { get; set; }
@@ -30,10 +30,10 @@ public class MrpOrder
 
     [XmlArray("polozky")]
     [XmlArrayItem("polozka")]
-    public List<MrpOrderItem>? Polozky { get; set; }
+    public List<MrpOrderInfoItem>? Polozky { get; set; }
 }
 
-public class MrpOrderItem
+public class MrpOrderInfoItem
 {
     [XmlAttribute("stav")]
     public int Stav { get; set; }

@@ -2,6 +2,7 @@ namespace JadeX.MRP.Commands;
 
 public enum MrpCommands
 {
+    ADREO0,
     EXPEO0,
     EXPEO1,
     CENEO0,

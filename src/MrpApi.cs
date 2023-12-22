@@ -31,6 +31,7 @@ public class MrpApi : IDisposable
     public Task<EXPOP0> EXPOP0(Action<RequestFilterOptions> requestFilterOptions) => this.PostFilteredAsync<EXPOP0>(requestFilterOptions);
 
     public Task<IMPEO0> IMPEO0(Action<RequestOrdersOptions> requestOrderOptions) => this.PostOrdersAsync<IMPEO0>(requestOrderOptions);
+    public Task<ADREO0> ADREO0(Action<RequestFilterOptions> requestFilterOptions) => this.PostFilteredAsync<ADREO0>(requestFilterOptions);
 
     public Task<T> PostAsync<T>(XDocument requestData) where T : IResponse => this.PostAsync<T>(DeserializeFromXmlString<Data>(requestData.ToString()));
 
@@ -257,6 +258,12 @@ public class MrpApi : IDisposable
 
         switch (responseData.Status?.Request?.Command)
         {
+            case MrpCommands.ADREO0:
+                response = new ADREO0()
+                {
+                    Addresses = dataXml.Descendants("adres").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<ADREO0Address>(x.ToString())).ToList(),
+                };
+                break;
             case MrpCommands.EXPEO0:
                 response = new EXPEO0()
                 {

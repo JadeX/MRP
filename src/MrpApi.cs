@@ -12,8 +12,8 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using JadeX.MRP.Commands;
 using JadeX.MRP.Xml;
-using JadeX.MRP.Xml.Datasets;
 using SharpCompress.Compressors.Deflate;
+using static JadeX.MRP.Commands.OrderOptions;
 
 public class MrpApi : IDisposable
 {
@@ -22,16 +22,12 @@ public class MrpApi : IDisposable
 
     public MrpApi(string url) => this.config = new MrpApiConfig() { Url = url };
 
-    public Task<CENEO0> CENEO0(Action<RequestFilterOptions> requestFilterOptions) => this.PostFilteredAsync<CENEO0>(requestFilterOptions);
-
-    public Task<EXPEO0> EXPEO0(Action<RequestFilterOptions> requestFilterOptions) => this.PostFilteredAsync<EXPEO0>(requestFilterOptions);
-
-    public Task<EXPEO1> EXPEO1(Action<RequestFilterOptions> requestFilterOptions) => this.PostFilteredAsync<EXPEO1>(requestFilterOptions);
-
-    public Task<EXPOP0> EXPOP0(Action<RequestFilterOptions> requestFilterOptions) => this.PostFilteredAsync<EXPOP0>(requestFilterOptions);
-
-    public Task<IMPEO0> IMPEO0(Action<RequestOrdersOptions> requestOrderOptions) => this.PostOrdersAsync<IMPEO0>(requestOrderOptions);
-    public Task<ADREO0> ADREO0(Action<RequestFilterOptions> requestFilterOptions) => this.PostFilteredAsync<ADREO0>(requestFilterOptions);
+    public Task<ADREO0> ADREO0(Action<FilterOptions> filterOptions) => this.PostFilteredAsync<ADREO0>(filterOptions);
+    public Task<CENEO0> CENEO0(Action<FilterOptions> filterOptions) => this.PostFilteredAsync<CENEO0>(filterOptions);
+    public Task<EXPEO0> EXPEO0(Action<FilterOptions> filterOptions) => this.PostFilteredAsync<EXPEO0>(filterOptions);
+    public Task<EXPEO1> EXPEO1(Action<FilterOptions> filterOptions) => this.PostFilteredAsync<EXPEO1>(filterOptions);
+    public Task<EXPOP0> EXPOP0(Action<FilterOptions> filterOptions) => this.PostFilteredAsync<EXPOP0>(filterOptions);
+    public Task<IMPEO0> IMPEO0(Action<OrderOptions> orderOptions) => this.PostOrdersAsync<IMPEO0>(orderOptions);
 
     public Task<T> PostAsync<T>(XDocument requestData) where T : IResponse => this.PostAsync<T>(DeserializeFromXmlString<Data>(requestData.ToString()));
 
@@ -199,11 +195,11 @@ public class MrpApi : IDisposable
         return DeserializeFromXmlString<MrpResponse>(Encoding.UTF8.GetString(data));
     }
 
-    private Task<T> PostFilteredAsync<T>(Action<RequestFilterOptions> requestFilterOptions) where T : IResponse
+    private Task<T> PostFilteredAsync<T>(Action<FilterOptions> filterOptions) where T : IResponse
     {
-        var filters = new RequestFilterOptions();
+        var filters = new FilterOptions();
 
-        requestFilterOptions(filters);
+        filterOptions(filters);
 
         return this.PostAsync<T>(new Data()
         {
@@ -214,16 +210,16 @@ public class MrpApi : IDisposable
         });
     }
 
-    private Task<T> PostOrdersAsync<T>(Action<RequestOrdersOptions> requestOrdersOptions) where T : IResponse
+    private Task<T> PostOrdersAsync<T>(Action<OrderOptions> requestOrdersOptions) where T : IResponse
     {
-        var orders = new RequestOrdersOptions();
+        var orders = new OrderOptions();
 
         requestOrdersOptions(orders);
 
         return this.PostAsync<T>(new Data()
         {
             Orders = orders.OrderItems,
-            Params = new Params()
+            Params = new IMPEO0Params()
             {
                 Items = orders.ParamItems
             }
@@ -267,40 +263,40 @@ public class MrpApi : IDisposable
             case MrpCommands.EXPEO0:
                 response = new EXPEO0()
                 {
-                    Categories = dataXml.Descendants("katalog").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpCategory>(x.ToString())).ToList(),
-                    Products = dataXml.Descendants("karty").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpProduct>(x.ToString())).ToList(),
-                    Replacements = dataXml.Descendants("nahrady").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpReplacement>(x.ToString())).ToList(),
+                    Categories = dataXml.Descendants("katalog").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<EXPEO0Category>(x.ToString())).ToList(),
+                    Products = dataXml.Descendants("karty").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<EXPEO0Product>(x.ToString())).ToList(),
+                    Replacements = dataXml.Descendants("nahrady").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<EXPEO0Replacement>(x.ToString())).ToList(),
                 };
                 break;
 
             case MrpCommands.EXPEO1:
                 response = new EXPEO1()
                 {
-                    Categories = dataXml.Descendants("katalog").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpCategory>(x.ToString())).ToList(),
-                    Products = dataXml.Descendants("karty").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpProduct>(x.ToString())).ToList(),
-                    Replacements = dataXml.Descendants("nahrady").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpReplacement>(x.ToString())).ToList(),
-                    Warehouses = dataXml.Descendants("sklady").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpWarehouse>(x.ToString())).ToList(),
-                    Stocks = dataXml.Descendants("stavy").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpStock>(x.ToString())).ToList()
+                    Categories = dataXml.Descendants("katalog").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<EXPEO0Category>(x.ToString())).ToList(),
+                    Products = dataXml.Descendants("karty").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<EXPEO0Product>(x.ToString())).ToList(),
+                    Replacements = dataXml.Descendants("nahrady").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<EXPEO0Replacement>(x.ToString())).ToList(),
+                    Warehouses = dataXml.Descendants("sklady").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<EXPEO1Warehouse>(x.ToString())).ToList(),
+                    Stocks = dataXml.Descendants("stavy").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<EXPEO1Stock>(x.ToString())).ToList()
                 };
                 break;
 
             case MrpCommands.CENEO0:
                 response = new CENEO0()
                 {
-                    Prices = dataXml.Descendants("ceny").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpPrice>(x.ToString())).ToList()
+                    Prices = dataXml.Descendants("ceny").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<CENEO0Price>(x.ToString())).ToList()
                 };
                 break;
 
             case MrpCommands.EXPOP0:
                 response = new EXPOP0()
                 {
-                    Order = dataXml.Descendants("objednavka").Select(x => DeserializeFromXmlString<MrpOrderInfo>(x.ToString())).FirstOrDefault()
+                    Order = dataXml.Descendants("objednavka").Select(x => DeserializeFromXmlString<EXPOP0Order>(x.ToString())).FirstOrDefault()
                 };
                 break;
             case MrpCommands.IMPEO0:
                 response = new IMPEO0()
                 {
-                    OrderIds = dataXml.Descendants("objednavka").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<MrpOrderId>(x.ToString())).ToList()
+                    OrderIds = dataXml.Descendants("objednavka").FirstOrDefault()?.Descendants("fields").Select(x => DeserializeFromXmlString<IMPEO0OrderIds>(x.ToString())).ToList()
                 };
                 break;
             default:

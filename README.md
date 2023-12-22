@@ -16,18 +16,18 @@ Knihovna není dostatečně otestována v reálném nasazení a chybí serializa
 
 | Příkaz | Stav                                                                                    |
 | ------ | --------------------------------------------------------------------------------------- |
-| EXPEO0 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.1-yellow.svg)   |
-| EXPEO1 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.1-yellow.svg)   |
-| IMPEO0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
-| CENEO0 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.2-yellow.svg)   |
-| ADREO0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
+| EXPEO0 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.1-green.svg)   |
+| EXPEO1 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.1-green.svg)   |
+| IMPEO0 | ![Částečné](https://img.shields.io/badge/Od-1.0.0--beta.6-orange.svg) |
+| CENEO0 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--alpha.2-green.svg)   |
+| ADREO0 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--beta.6-green.svg) |
 | EXPFV0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
 | EXPFV1 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
 | EXPFV2 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
 | EXPFVPDF | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
 | EXPFP0 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
 | EXPFP1 | ![Nedostupné](https://img.shields.io/badge/Dostupnost-Nen%C3%AD-red.svg) |
-| EXPOP0 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--beta.5-yellow.svg) |
+| EXPOP0 | ![Dostupné](https://img.shields.io/badge/Od-1.0.0--beta.5-green.svg) |
 
 ## Začínáme
 

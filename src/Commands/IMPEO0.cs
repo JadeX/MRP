@@ -1,9 +1,19 @@
 namespace JadeX.MRP.Commands;
 
 using System.Collections.Generic;
-using JadeX.MRP.Xml.Datasets;
+using System.Xml.Serialization;
 
 public class IMPEO0 : Response
 {
-    public List<MrpOrderId>? OrderIds { get; set; }
+    public List<IMPEO0OrderIds>? OrderIds { get; set; }
+}
+
+[XmlRoot("fields")]
+public class IMPEO0OrderIds
+{
+    [XmlElement("puvodniCislo")]
+    public string? PuvodniCislo { get; set; }
+
+    [XmlElement("cislo")]
+    public string? Cislo { get; set; }
 }
